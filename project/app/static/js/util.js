@@ -1,6 +1,6 @@
 async function abreProduto(id){
     const url = '/atualizar/';
-    const param = id;
+    const params = id;
     const options = {
         method : "get"
     }
@@ -10,8 +10,8 @@ async function abreProduto(id){
         return response.text()
     })
     .then(data=>{
-        document.querySelector("#modal-container").removeChild()
-        document.querySelector("#modal-container").innerHTML = data
+        $("#modal-container").html(data)
+        $("#EditarProduto").modal("show");
     })
     .catch(e=>{
         console.log(e)
@@ -20,7 +20,7 @@ async function abreProduto(id){
 
 async function excluirProduto(id){
     const url = '/atualizar/';
-    const param = id;
+    const params = id;
     const options = {
         method : "delete"
     }
@@ -30,7 +30,7 @@ async function excluirProduto(id){
         return response.text()
     })
     .then(data=>{
-        location.reload()
+        //location.reload()
     })
     .catch(e=>{
         console.log(e)

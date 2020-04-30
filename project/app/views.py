@@ -23,8 +23,16 @@ def home(request):
     if(request.method == 'POST'):
         form = ProductForm(request.POST)
         if form.is_valid():
+            print(form)
             form.save()
-            return redirect(request,'/')
+            try:
+                Produtos = produtos.objects.all()
+            except:
+                raise Http404("forbiden page")
+            context = {
+                'listaDeProdutos' : Produtos
+            }
+            return render(request,'home.html',context)
         else:
             context = {
                 'erros' : 'Erro ao preencher'
@@ -43,17 +51,17 @@ def atualizar(request,pk):
         }
         return render(request,'modalProduto.html',context)
     elif request.method == 'POST' :
-        user= get_object_or_404(User, pk=pk) 
-        form = UserForm(request.POST,instance=user)
+        user= get_object_or_404(produtos, pk=pk) 
+        form = ProductForm(request.POST,instance=user)
         if form.is_valid():
             form.save( )
-            return redirect(request,'/')
+            return render(request,'home.html',context)
         else:
             context = {
                 'erros' : 'Erro ao editar produto'
             }
             return render(request,'home.html',context)
     elif request.method == "DELETE":
-        User.objects.filter(pk).delete()
-        return redirect(request,'/')
+        produtos.objects.filter(pk=pk).delete()
+        return render(request,'home.html')
 

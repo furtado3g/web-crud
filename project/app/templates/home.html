@@ -28,8 +28,8 @@
                                     <td>{{ item.nome }}</td>
                                     <td>{{ item.valor }}</td>
                                     <td>
-                                        <button class="btn btn-success">Editar</button>
-                                        <button class="btn btn-danger">Excluir</button>
+                                        <button class="btn btn-success" onclick="abreProduto('{{ item.id }}')">Editar</button>
+                                        <button class="btn btn-danger"  onclick="excluirProduto('{{ item.id }}')">Excluir</button>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -57,12 +57,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="/" method="post">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Nome</label>
-                                <input type="text" class="form-control" id="nome">
+                                <input type="text" class="form-control" name="nome">
                             </div>
                         </div>
                     </div>
@@ -70,28 +70,28 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Codigo de Barras</label>
-                                <input type="text" class="form-control" id="cod_barras">
+                                <input type="text" class="form-control" name="cod_barras">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Valor</label>
-                                <input type="text" class="form-control" id="valor">
+                                <input type="text" class="form-control" name="valor">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row text-center mb-3">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success">Adicionar</button>
                         </div>
                     </div>
                 </form>
             </div>
-                <div class="row text-center mb-3">
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-success">Adicionar</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <div id="modal-container"></div>
+    <div id="modal-container">
+    </div>
 {% endblock modal %}
 {% block js %}
     {% load static %}
