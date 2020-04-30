@@ -1,0 +1,45 @@
+{% for item in produtos %}
+<div class="modal" tabindex="-1" role="dialog" id="NovoProduto">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-header bg-purple">
+            <h5 class="modal-title">Editar Produto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form action="/atualizar/{{ item.id }}" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">Nome</label>
+                            <input type="text" class="form-control" id="nome" values="{{ item.nome }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Codigo de Barras</label>
+                            <input type="text" class="form-control" id="cod_barras" values="{{ item.cod_barras }}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Valor</label>
+                            <input type="text" class="form-control" id="valor" values="{{ item.valor }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center mb-3">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success">Adicionar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}

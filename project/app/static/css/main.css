@@ -2,3 +2,15 @@
     background-color: #510391;
     color: #fff;
 }
+
+.btn-purple{
+    background-color: #510391;
+    color: #fff;
+}
+
+.btn-purple:hover{
+    background-color: #510391;
+    color: #fff;
+    opacity: 0.75;
+}
+
